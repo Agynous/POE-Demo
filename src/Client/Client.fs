@@ -75,6 +75,7 @@ let show = function
     | { Counter = None   } -> "Loading..."
 
 let view (model : Model) (dispatch : Msg -> unit) =
+    div[] [
      nav [ Class "navbar" ]
         [ div [ Class "container" ]
             [ div [ Class "navbar-brand" ]
@@ -83,7 +84,7 @@ let view (model : Model) (dispatch : Msg -> unit) =
                     [ img [ Src "https://cdn.emk.dev/templates/bulma-logo-light.png"
                             Alt "Logo" ] ]
                   span [ Class "navbar-burger burger"
-                         HTMLAttr.Data ("target", "navbarMenu") ]
+                         Data ("target", "navbarMenu") ]
                     [ span [ ]
                         [ ]
                       span [ ]
@@ -121,20 +122,18 @@ let view (model : Model) (dispatch : Msg -> unit) =
                     [ div [ Class "card large" ]
                         [ div [ Class "card-image is-16by9" ]
                             [ figure [ Class "image" ]
-                                [ img [ HTMLAttr.Custom (":src", "card.image")
-                                        Alt "Image" ] ] ]
+                                [ img [ Alt "Image" ] ] ]
                           div [ Class "card-content" ]
                             [ div [ Class "media" ]
                                 [ div [ Class "media-left" ]
                                     [ figure [ Class "image is-48x48" ]
-                                        [ img [ HTMLAttr.Custom (":src", "card.avatar")
-                                                Alt "Image" ] ] ]
+                                        [ img [ Alt "Image" ] ] ]
                                   div [ Class "media-content" ]
                                     [ p [ Class "title is-4 no-padding" ]
                                         [ str "{{card.user.title}}" ]
                                       p [ ]
                                         [ span [ Class "title is-6" ]
-                                            [ a [ HTMLAttr.Custom (":href", "`http://twitter.com/${card.user.handle}`") ]
+                                            [ a [  ]
                                                 [ str "{{card.user.handle}}" ] ] ]
                                       p [ Class "subtitle is-6" ]
                                         [ str "{{card.user.title}}" ] ] ]
@@ -166,15 +165,15 @@ let view (model : Model) (dispatch : Msg -> unit) =
                   p [ ]
                     [ strong [ ]
                         [ str "Bulma" ]
-                          str "by"
+                      str "by"
                       a [ Href "http://jgthms.com" ]
                         [ str "Jeremy Thomas" ]
-                          str ".
+                      str ".
                 The source code is licensed"
                       a [ Href "http://opensource.org/licenses/mit-license.php" ]
                         [ str "MIT" ]
-                          str "."
-                      br [ ] ] ] ] ]
+                      str "."
+                      br [ ] ] ] ] ] ]
 
 #if DEBUG
 open Elmish.Debug
